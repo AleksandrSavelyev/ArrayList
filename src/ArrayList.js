@@ -51,11 +51,16 @@ ArrayList.prototype.myClear = function() {
 }
 
 ArrayList.prototype.myToString = function() {
-    let listString = '';
+    let listString = '[';
 
     for(let i = 0; i < this.array.length; i++) {
-        listString += this.array[i];
+        if(i === this.size - 1) {
+        listString += this.array[i]; 
+        } else {
+            listString += `${this.array[i]}, `; 
+        }
     }
+    listString += ']'
 
     return listString;
 }
@@ -72,18 +77,37 @@ ArrayList.prototype.myRevers = function() {
     return this.array;
 }
 
-ArrayList.prototype.mySlice = function(arg1, arg2) {
-    let box = [];
-    if(arg1 < 0) {
-        arg1 = this.array.length - arg;
+ArrayList.prototype.mySlice = function(index1, index2) {
+
+    this.newarr = [];
+
+    if(index2 === undefined){
+        for(let i = 0; i < this.array.length; i++) { 
+            this.newarr[i] = this.array[i+index1];
+        }
+
+        this.newarr.length = this.array.length - index1;
+
+    return this.newarr;
     }
-    
+    this.newarr.length = index2;
+    for(let i = 0; i < this.array.length; i++) { 
+        this.newarr[i] = this.array[i+index1];
+    }
+    this.newarr.length = index2 - index1;
+
+    return this.newarr;
+
 }
 
 const alist = new ArrayList;
-alist.myInit([1, 2, 3, 4]);
+alist.myInit([1, 2, 3]);
 // console.log(alist.myUnShift(8));
 // console.log(alist);
 // console.log(alist.myRevers());
-alist.mySlice();
+//alist.mySlice();
+console.log(alist.mySlice(1))
+
+module.exports = ArrayList;
+
 
