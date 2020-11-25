@@ -21,6 +21,7 @@ describe('ArrayList methods', () => {
                 expectedString: '[1, 2, 3, 4, 5, 6, 7, 8, 9]'
             }
         ]; 
+
         testData.forEach(( {array, expectedSize, expectedString} ) => {
             it(`should return size ${expectedSize} and ${expectedString}`, () => {
                 aList.myInit(array);
@@ -36,29 +37,31 @@ describe('ArrayList methods', () => {
         const testData = [
             {   
                 array: [1, 2, 3],
-                arg: 0,
+                element: 0,
                 expectedSize: 4,
             }, 
             {   
                 array: [1, 2, 3, 4, 5, 6],
-                arg: 0,
+                element: 0,
                 expectedSize: 7,
             },
             {
                 array: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                arg: 0,
+                element: 0,
                 expectedSize: 10,
             }
-        ]; 
-        testData.forEach(( {array, expectedSize, arg} ) => {
+        ];
+
+        testData.forEach(( {array, expectedSize, element} ) => {
             it(`should return size ${expectedSize}`, () => {
                 aList.myInit(array);
-                aList.myPush(arg);
+               aList.myPush(element);
                 
                 assert.deepEqual(aList.size, expectedSize);
             });
         });
     });
+
     describe('myPop', () => {
         const aList = new ArrayList();
         const testData = [
@@ -75,6 +78,7 @@ describe('ArrayList methods', () => {
                 expectedElement: 9
             }
         ]; 
+
         testData.forEach(( {array, expectedElement} ) => {
             it(`should return element ${expectedElement}`, () => {
                 aList.myInit(array);
@@ -99,7 +103,8 @@ describe('ArrayList methods', () => {
                 array: [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 expectedElement: 1
             }
-        ]; 
+        ];
+
         testData.forEach(( {array, expectedElement, expectedSize} ) => {
             it(`should return element ${expectedElement}`, () => {
                 aList.myInit(array);
@@ -127,7 +132,8 @@ describe('ArrayList methods', () => {
                 arg: 0,
                 expectedSize: 10,
             }
-        ]; 
+        ];
+         
         testData.forEach(( {array, expectedSize, arg} ) => {
             it(`should return size ${expectedSize}`, () => {
                 aList.myInit(array);
@@ -153,7 +159,8 @@ describe('ArrayList methods', () => {
                 array: [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 expectedSize: 0,
             }
-        ]; 
+        ];
+
         testData.forEach(( {array, expectedSize} ) => {
             it(`should return size ${expectedSize}`, () => {
                 aList.myInit(array);
@@ -163,6 +170,7 @@ describe('ArrayList methods', () => {
             });
         });
     });
+
     describe('myRevers', () => {
         const aList = new ArrayList();
         const testData = [
@@ -178,7 +186,8 @@ describe('ArrayList methods', () => {
                 array: [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 expectedArray: [9, 8, 7, 6, 5, 4, 3, 2, 1]
             }
-        ]; 
+        ];
+
         testData.forEach(( {array, expectedArray} ) => {
             it(`should return reversed array ${expectedArray}`, () => {
                 aList.myInit(array);
@@ -188,32 +197,34 @@ describe('ArrayList methods', () => {
             });
         });
     });
+
     describe('mySlice', () => {
         const aList = new ArrayList();
         const testData = [
             {   
                 array: [1, 2, 3],
-                arg1: 1,
+                startIndex: 1,
                 expectedArray: [2, 3]
             }, 
             {   
                 array: [1, 2, 3, 4, 5, 6],
-                arg1: 1,
-                arg2: 4,
+                startIndex: 1,
+                endIndex: 4,
                 expectedArray: [2, 3, 4]
             },
             {
                 array: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                arg1: 3,
-                arg2: 7,
+                startIndex: 3,
+                endIndex: 7,
                 expectedArray: [4, 5, 6, 7],
             }
-        ]; 
-        testData.forEach(( {array, arg1, arg2, expectedArray} ) => {
+        ];
+
+        testData.forEach(( {array, startIndex, endIndex, expectedArray} ) => {
             it(`should return sliced array ${expectedArray}`, () => {
                 aList.myInit(array);
                 
-                assert.deepEqual(aList.mySlice(arg1, arg2), expectedArray);
+                assert.deepEqual(aList.mySlice(startIndex, endIndex), expectedArray);
             });
         });
     });

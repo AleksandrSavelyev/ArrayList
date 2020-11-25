@@ -2,6 +2,7 @@ function ArrayList() {
     this.array = [];
     this.size = 0;
 }
+
 ArrayList.prototype.myInit = function(array) {
     this.array = array;
     this.size = array.length;
@@ -40,6 +41,7 @@ ArrayList.prototype.myUnShift = function (arg) {
     for(let i = length; i >= 0; i--) {
         this.array[i] = this.array[i - 1];
     }
+
     this.array[0] = arg;
 
     return ++this.size;
@@ -60,6 +62,7 @@ ArrayList.prototype.myToString = function() {
             listString += `${this.array[i]}, `; 
         }
     }
+
     listString += ']'
 
     return listString;
@@ -67,18 +70,18 @@ ArrayList.prototype.myToString = function() {
 
 ArrayList.prototype.myRevers = function() {
     const box = [];
-    let x = 0;
+    let boxIndex = 0;
 
     for(let i = this.array.length - 1; i >= 0; i--) {
-        box[x++] = this.array[i];
+        box[boxIndex++] = this.array[i];
     }
+
     this.array = box;
 
     return this.array;
 }
 
 ArrayList.prototype.mySlice = function(index1, index2) {
-
     this.newarr = [];
 
     if(index2 === undefined){
@@ -101,12 +104,15 @@ ArrayList.prototype.mySlice = function(index1, index2) {
 }
 
 const alist = new ArrayList;
-alist.myInit([1, 2, 3]);
-// console.log(alist.myUnShift(8));
-// console.log(alist);
-// console.log(alist.myRevers());
-//alist.mySlice();
-console.log(alist.mySlice(1))
+alist.myInit([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+console.log(alist.mySlice(1));
+console.log(alist.myPush(10));
+console.log(alist.myUnShift(10));
+console.log(alist.myPop());
+console.log(alist.myShift());
+console.log(alist.mySlice(2));
+console.log(alist.myClear());
+console.log(alist.myToString());
 
 module.exports = ArrayList;
 
